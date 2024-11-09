@@ -6,6 +6,7 @@ import Login from "../components/Login";
 
 const Authentication = () => {
   const [isLogin, setIsLogin] = useState(false);
+
   return (
     <>
       <div className="relative w-full  h-screen flex py-4  justify-center items-center">

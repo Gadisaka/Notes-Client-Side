@@ -1,23 +1,42 @@
 import React, { useState } from "react";
+import { useNavigate } from "react-router-dom";
+import { useAuthStore } from "../zustand/store";
 
 function Login({ onSwitchToSignup }) {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const login = useAuthStore((state) => state.login);
+  const navigate = useNavigate();
+  const setNotes = useAuthStore((state) => state.setNotes);
+
+  const [isLoding, setIsLoading] = useState(false);
 
   const handleLogin = async () => {
+    setIsLoading(true);
     try {
-      console.log("Logging in with:", { email, password });
-
-      // Placeholder for the actual login API request
-      // const response = await fetch('/api/login', {
-      //   method: 'POST',
-      //   headers: { 'Content-Type': 'application/json' },
-      //   body: JSON.stringify({ email, password })
-      // });
-      // const result = await response.json();
-      // console.log("Server response:", result);
+      const response = await fetch("/api/auth/login", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ email, password }),
+      });
+      const data = await response.json();
+      if (data.token) {
+        login(data.token);
+        const notesResponse = await fetch("/api/note/all", {
+          method: "GET",
+          headers: {
+            "Content-Type": "application/json",
+            Authorization: `Bearer ${data.token}`,
+          },
+        });
+        const notesData = await notesResponse.json();
+        setNotes(notesData);
+        navigate("/");
+      }
     } catch (error) {
       console.error("Login failed:", error);
+    } finally {
+      setIsLoading(false);
     }
   };
 
@@ -34,6 +53,8 @@ function Login({ onSwitchToSignup }) {
           <input
             type="email"
             //   placeholder="Email"
+            name="email"
+            required
             value={email}
             onChange={(e) => setEmail(e.target.value)}
             className="w-full p-2 mb-4 border rounded"
@@ -49,6 +70,8 @@ function Login({ onSwitchToSignup }) {
           <input
             type="password"
             //   placeholder="Password"
+            required
+            name="password"
             value={password}
             onChange={(e) => setPassword(e.target.value)}
             className="w-full p-2 mb-4 border rounded"
@@ -57,8 +80,9 @@ function Login({ onSwitchToSignup }) {
         <button
           onClick={handleLogin}
           className="w-full bg-[#D375B9] font-bold text-2xl text-white p-2 rounded mt-10"
+          disabled={isLoding}
         >
-          Login
+          {isLoding ? "Loading..." : "Login"}
         </button>
         <p className="text-center text-gray-600 text-xl">
           Don't have an account?{" "}
