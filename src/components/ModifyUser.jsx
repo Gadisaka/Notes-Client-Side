@@ -75,7 +75,7 @@ const ModifyUser = () => {
             type="email"
             name="email"
             onChange={handleInputChange}
-            placeholder={data.email}
+            defaultValue={data.email}
             className="w-full p-2 border dark:bg-[#404363] dark:border-none rounded shadow-sm"
           />
         </div>
@@ -90,7 +90,7 @@ const ModifyUser = () => {
             type="password"
             name="password"
             onChange={handleInputChange}
-            placeholder={data.password}
+            defaultValue={data.password}
             className="w-full p-2 border dark:bg-[#404363] dark:border-none rounded shadow-sm"
           />
         </div>
@@ -102,7 +102,7 @@ const ModifyUser = () => {
             type="text"
             name="username"
             onChange={handleInputChange}
-            placeholder={data.username}
+            defaultValue={data.username}
             className="w-full p-2 border dark:bg-[#404363] dark:border-none rounded shadow-sm"
           />
         </div>
@@ -114,7 +114,7 @@ const ModifyUser = () => {
             type="text"
             name="phone"
             onChange={handleInputChange}
-            placeholder={data.phone}
+            defaultValue={data.phone}
             className="w-full p-2 dark:bg-[#404363] dark:border-none border rounded shadow-sm"
           />
         </div>
@@ -126,7 +126,7 @@ const ModifyUser = () => {
             type="text"
             name="birthday_year"
             onChange={handleInputChange}
-            placeholder={data.birthday_year}
+            defaultValue={data.birthday_year}
             className="w-full p-2 dark:bg-[#404363] dark:border-none border rounded shadow-sm"
           />
         </div>
