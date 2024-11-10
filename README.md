@@ -26,21 +26,23 @@ This is the frontend for the Notes App, a simple application that allows users t
    git clone https://github.com/yourusername/notes-app-frontend.git
    cd notes-app-frontend
 
-   1. Install dependencies:
+1. Install dependencies:
+   ```bash
+   npm install
 
-      npm install
-
-   3. Create a .env file in the root of the project and add your environment variables:
-
-      REACT_APP_API_URL=https://notes-server-side-api.onrender.com
+3. Create a .env file in the root of the project and add your environment variables:
+   ```bash
+   REACT_APP_API_URL=https://notes-server-side-api.onrender.com
 
 #Usage
 
    1. Start the development server:
-
+      ```bash
       npm start
 
-   2. Open your browser and navigate to http://localhost:3000.
+   2. Open your browser and navigate to:
+      ```bash
+      http://localhost:3000.
 
 
 #Available Scripts
