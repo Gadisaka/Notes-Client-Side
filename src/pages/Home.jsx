@@ -321,7 +321,7 @@ const Home = () => {
               </button>
             </div>
           </div>
-          <div className="md:hidden bg-white dark:bg-[#241229]  shadow-xl w-[90%] h-[48px] text-gray-500 mt-4 justify-center flex space-x-4">
+          <div className="md:hidden bg-white dark:bg-[#25273D]  shadow-xl w-[90%] h-[48px] text-gray-500 mt-4 justify-center flex space-x-4">
             <button
               onClick={() => setFilter("All")}
               className={`focus:outline-none ${
