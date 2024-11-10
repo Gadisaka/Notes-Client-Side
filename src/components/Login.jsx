@@ -14,21 +14,27 @@ function Login({ onSwitchToSignup }) {
   const handleLogin = async () => {
     setIsLoading(true);
     try {
-      const response = await fetch("/api/auth/login", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ email, password }),
-      });
+      const response = await fetch(
+        "https://notes-server-side-api.onrender.com/api/auth/login",
+        {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({ email, password }),
+        }
+      );
       const data = await response.json();
       if (data.token) {
         login(data.token);
-        const notesResponse = await fetch("/api/note/all", {
-          method: "GET",
-          headers: {
-            "Content-Type": "application/json",
-            Authorization: `Bearer ${data.token}`,
-          },
-        });
+        const notesResponse = await fetch(
+          "https://notes-server-side-api.onrender.com/api/note/all",
+          {
+            method: "GET",
+            headers: {
+              "Content-Type": "application/json",
+              Authorization: `Bearer ${data.token}`,
+            },
+          }
+        );
         const notesData = await notesResponse.json();
         setNotes(notesData);
         navigate("/");

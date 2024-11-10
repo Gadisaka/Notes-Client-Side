@@ -6,7 +6,7 @@ export default defineConfig({
   server: {
     proxy: {
       // Proxy requests starting with /api to another server (e.g., backend on localhost:5000)
-      "/api": "https://notes-server-side-api.onrender.com/",
+      // "/api": "https://notes-server-side-api.onrender.com/",
     },
   },
   plugins: [react()],
