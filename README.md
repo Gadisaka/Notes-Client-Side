@@ -34,7 +34,7 @@ This is the frontend for the Notes App, a simple application that allows users t
    ```bash
    REACT_APP_API_URL=https://notes-server-side-api.onrender.com
 
-#Usage
+##Usage
 
    1. Start the development server:
       ```bash
@@ -45,7 +45,7 @@ This is the frontend for the Notes App, a simple application that allows users t
       http://localhost:3000.
 
 
-#Available Scripts
+##Available Scripts
 
 In the project directory, you can run:
 
@@ -54,11 +54,11 @@ In the project directory, you can run:
    npm run build: Builds the app for production.
    npm run eject: Ejects the app from Create React App configuration.
 
-#Contributing
+##Contributing
 Contributions are welcome! Please open an issue or submit a pull request for any changes.
 
 
-#Contact
+##Contact
 If you have any questions or feedback, feel free to reach out:
 
    Email: Gadisaka04@gmail.com
