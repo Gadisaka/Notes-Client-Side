@@ -27,18 +27,20 @@ const ModifyUser = () => {
     const { name, value } = e.target;
     setNewFormData((prevData) => ({ ...prevData, [name]: value }));
   };
-
   const handleProfileUpdate = async () => {
     setIsLoading(true);
     try {
-      const response = await fetch(`/api/auth/userupdate/${data.id}`, {
-        method: "PATCH",
-        headers: {
-          "Content-Type": "application/json",
-          Authorization: `Bearer ${useAuthStore.getState().authToken}`,
-        },
-        body: JSON.stringify(newData),
-      });
+      const response = await fetch(
+        `https://notes-server-side-api.onrender.com/api/auth/userupdate/${data.id}`,
+        {
+          method: "PATCH",
+          headers: {
+            "Content-Type": "application/json",
+            Authorization: `Bearer ${useAuthStore.getState().authToken}`,
+          },
+          body: JSON.stringify(newData),
+        }
+      );
       if (response.ok) {
         const updatedData = await response.json();
         setUser(updatedData);

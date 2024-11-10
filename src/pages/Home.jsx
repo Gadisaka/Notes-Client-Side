@@ -17,13 +17,16 @@ const Home = () => {
   const [newNote, setNewNote] = useState("");
 
   const fetchNotes = async () => {
-    const response = await fetch("/api/note/all", {
-      method: "GET",
-      headers: {
-        "Content-Type": "application/json",
-        Authorization: `Bearer ${useAuthStore.getState().authToken}`,
-      },
-    });
+    const response = await fetch(
+      "https://notes-server-side-api.onrender.com/api/note/all",
+      {
+        method: "GET",
+        headers: {
+          "Content-Type": "application/json",
+          Authorization: `Bearer ${useAuthStore.getState().authToken}`,
+        },
+      }
+    );
     const notesData = await response.json();
     setNotes(notesData);
   };
@@ -36,14 +39,17 @@ const Home = () => {
     if (newNote.trim() === "") return;
 
     try {
-      const response = await fetch("/api/note/create", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-          Authorization: `Bearer ${useAuthStore.getState().authToken}`,
-        },
-        body: JSON.stringify({ note: newNote }),
-      });
+      const response = await fetch(
+        "https://notes-server-side-api.onrender.com/api/note/create",
+        {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+            Authorization: `Bearer ${useAuthStore.getState().authToken}`,
+          },
+          body: JSON.stringify({ note: newNote }),
+        }
+      );
 
       const data = await response.json();
       addNote(data.notes);
@@ -69,14 +75,17 @@ const Home = () => {
     }
 
     try {
-      const response = await fetch(`/api/note/update/${id}`, {
-        method: "PATCH",
-        headers: {
-          "Content-Type": "application/json",
-          Authorization: `Bearer ${useAuthStore.getState().authToken}`,
-        },
-        body: JSON.stringify({ is_completed: !is_completed }),
-      });
+      const response = await fetch(
+        `https://notes-server-side-api.onrender.com/api/note/update/${id}`,
+        {
+          method: "PATCH",
+          headers: {
+            "Content-Type": "application/json",
+            Authorization: `Bearer ${useAuthStore.getState().authToken}`,
+          },
+          body: JSON.stringify({ is_completed: !is_completed }),
+        }
+      );
 
       if (response.ok) {
         updateNote(id);
@@ -101,13 +110,16 @@ const Home = () => {
       return;
     }
     try {
-      const response = await fetch(`/api/note/delete/${id}`, {
-        method: "DELETE",
-        headers: {
-          "Content-Type": "application/json",
-          Authorization: `Bearer ${useAuthStore.getState().authToken}`,
-        },
-      });
+      const response = await fetch(
+        `https://notes-server-side-api.onrender.com/api/note/delete/${id}`,
+        {
+          method: "DELETE",
+          headers: {
+            "Content-Type": "application/json",
+            Authorization: `Bearer ${useAuthStore.getState().authToken}`,
+          },
+        }
+      );
 
       if (response.ok) {
         deleteNote(id);
@@ -125,13 +137,16 @@ const Home = () => {
 
   const handleClearCompleted = async () => {
     try {
-      const response = await fetch("/api/note/clear", {
-        method: "DELETE",
-        headers: {
-          "Content-Type": "application/json",
-          Authorization: `Bearer ${useAuthStore.getState().authToken}`,
-        },
-      });
+      const response = await fetch(
+        "https://notes-server-side-api.onrender.com/api/note/clear",
+        {
+          method: "DELETE",
+          headers: {
+            "Content-Type": "application/json",
+            Authorization: `Bearer ${useAuthStore.getState().authToken}`,
+          },
+        }
+      );
 
       if (response.ok) {
         clearCompletedNotes();

@@ -31,13 +31,16 @@ const User = () => {
   // };
 
   const fetchUser = async () => {
-    const response = await fetch(`/api/auth/user`, {
-      method: "GET",
-      headers: {
-        "Content-Type": "application/json",
-        Authorization: `Bearer ${useAuthStore.getState().authToken}`,
-      },
-    });
+    const response = await fetch(
+      `https://notes-server-side-api.onrender.com/api/auth/user`,
+      {
+        method: "GET",
+        headers: {
+          "Content-Type": "application/json",
+          Authorization: `Bearer ${useAuthStore.getState().authToken}`,
+        },
+      }
+    );
     const fetchedData = await response.json();
     setUser(fetchedData);
   };
