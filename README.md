@@ -62,4 +62,4 @@ Contributions are welcome! Please open an issue or submit a pull request for any
 If you have any questions or feedback, feel free to reach out:
 
    Email: Gadisaka04@gmail.com
-   GitHub: Gadisaka
+   GitHub: https://github.com/Gadisaka
